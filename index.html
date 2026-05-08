@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ezel Bayraktar | Panel</title>
     <style>
+        /* TEMEL AYARLAR */
         body {
             background-color: #050505;
             color: white;
@@ -16,129 +17,136 @@
             align-items: center;
             min-height: 100vh;
             text-align: center;
-            justify-content: flex-start;
+            overflow-x: hidden;
         }
 
-        /* ARKA PLAN - profil.jpg eklendi */
+        /* ARKA PLAN - profil.jpg burada kullanılıyor */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('profil.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('profil.jpg');
             background-size: cover;
             background-position: center;
-            filter: brightness(0.4);
             z-index: -1;
         }
 
-        /* SİTE KURUCUSU - En üstte ve daha küçük */
+        /* SİTE KURUCUSU - En üstte ve şık */
         .admin-badge {
             background: linear-gradient(45deg, #00d2ff, #0081a7);
             color: #000;
-            padding: 5px 12px;
+            padding: 5px 15px;
             border-radius: 50px;
             font-size: 0.7rem;
             text-transform: uppercase;
             font-weight: bold;
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
-            margin-top: 10px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+            margin-top: 15px;
             margin-bottom: 20px;
+            display: inline-block;
         }
 
-        /* ORTADAKİ FOTOĞRAF - profil.jpg yerinde duruyor */
+        /* ORTADAKİ KÜÇÜK FOTOĞRAF - profil2.jpg burada */
         .profile-img {
-            width: 130px; height: 130px;
+            width: 140px; 
+            height: 140px;
             border-radius: 20px;
             object-fit: cover;
             border: 2px solid #ff0000;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-            margin-bottom: 10px;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+            margin-bottom: 15px;
         }
 
         .username {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #ff0000;
             font-weight: bold;
             margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255,0,0,0.5);
         }
 
         .status {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #bbb;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            font-style: italic;
         }
 
+        /* BUTON GRUBU */
         .btn-stack {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
             width: 85%;
-            max-width: 350px;
+            max-width: 360px;
         }
 
         .action-btn {
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 1rem;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1.05rem;
             font-weight: bold;
             text-decoration: none;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.3s ease;
             border: none;
+            width: 100%;
         }
 
         .channel-btn {
-            background-color: #1a1a1a;
+            background-color: #111;
             color: white;
             border: 1px solid #333;
         }
 
-        /* FİYAT BUTONU - Şekilli */
+        .channel-btn:hover {
+            border-color: #ff0000;
+            box-shadow: 0 0 15px rgba(255,0,0,0.3);
+        }
+
+        /* FİYAT BUTONU - Kırmızı Parlayan */
         .price-btn {
-            background: linear-gradient(135deg, #ff0000, #a10000);
+            background: linear-gradient(135deg, #ff0000, #8b0000);
             color: white;
-            box-shadow: 0 4px 15px rgba(255,0,0,0.3);
+            box-shadow: 0 5px 20px rgba(255,0,0,0.4);
         }
 
-        /* FİYAT PANELİ - Başlangıçta gizli */
+        .price-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* GİZLİ FİYAT PANELİ */
         #fiyat-paneli {
-            display: none;
-            margin-top: 20px;
-            background: rgba(15, 15, 15, 0.95);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid #ff0000;
-            width: 85%;
-            max-width: 350px;
-            text-align: left;
-            box-shadow: 0 0 25px rgba(255,0,0,0.2);
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .panel-title {
+            display: none; /* Başlangıçta gizli */
+            margin-top: 25px;
+            background: rgba(10, 10, 10, 0.98);
+            padding: 25px;
+            border-radius: 20px;.p-title {
             color: #ff0000;
             font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
             border-bottom: 1px solid #333;
             padding-bottom: 5px;
-            margin-bottom: 10px;
-            display: block;
+            font-size: 1.1rem;
         }
 
-        .panel-item {
-            font-size: 0.9rem;
-            margin: 6px 0;
-            color: #ddd;
+        .p-item {
+            font-size: 0.95rem;
+            margin: 10px 0;
+            color: #eee;
+            display: flex;
+            justify-content: space-between;
         }
+
+        .p-item span { color: #ff0000; font-weight: bold; }
     </style>
 </head>
-<body><div class="admin-badge">SİTE KURUCUSU: @ROGUE44V</div>
+<body>
+
+    <div class="admin-badge">SİTE KURUCUSU: @ROGUE44V</div>
     
-    <img src="profil.jpg" alt="Ezel" class="profile-img">
+    <img src="profil2.jpg" alt="Ezel" class="profile-img">
     
     <div class="username">@ezelbayraktarrtr</div>
     <p class="status">Çalıyor: Massaka - Cehennemin Dibi</p>
@@ -148,23 +156,23 @@
             KANAL LİNKİ 🇹🇷 👇
         </a>
 
-        <button class="action-btn price-btn" onclick="togglePrice()">
+        <button class="action-btn price-btn" onclick="toggleFiyat()">
             Fiyat Listesi •••
         </button>
     </div>
 
     <div id="fiyat-paneli">
-        <span class="panel-title">TEKLİ KART - CREDIT</span>
-        <p class="panel-item">✦ 1X CHECKED LIVE KART: 500TL</p>
-        <p class="panel-item">✦ İSTEK BİN LIVE: 600TL</p>
-        <p class="panel-item">✦ 3X KART (TOPLU): 1400TL</p>
+        <span class="p-title">TEKLİ KART - CREDIT</span>
+        <div class="p-item">1X CHECKED LIVE KART <span>500TL</span></div>
+        <div class="p-item">İSTEK BİN LIVE <span>600TL</span></div>
+        <div class="p-item">3X KART (TOPLU) <span>1400TL</span></div>
 
-        <span class="panel-title" style="margin-top:15px;">ÇOKLU SATIŞ</span>
-        <p class="panel-item">✦ 20X TXT KART (2500TL)</p>
-        <p class="panel-item">✦ 40X TXT KART (4000TL)</p>
-        <p class="panel-item">✦ 80X TXT KART (6500TL)</p>
+        <span class="p-title" style="margin-top:20px;">ÇOKLU SATIŞ</span>
+        <div class="p-item">20X TXT KART <span>2500TL</span></div>
+        <div class="p-item">40X TXT KART <span>4000TL</span></div>
+        <div class="p-item">80X TXT KART <span>6500TL</span></div>
         
-        <p style="color:#888; font-size:0.7rem; margin-top:15px; text-align:center;">* NERDEYSE TÜM SİTELERİN METHODU MEVCUT *</p>
+        <p style="color:#666; font-size:0.75rem; text-align:center; margin-top:15px;">* NERDEYSE TÜM SİTELERİN METHODU MEVCUT *</p>
     </div>
 
     <audio id="muzik" loop>
@@ -172,7 +180,7 @@
     </audio>
 
     <script>
-        function togglePrice() {
+        function toggleFiyat() {
             var panel = document.getElementById("fiyat-paneli");
             var audio = document.getElementById("muzik");
             
@@ -180,9 +188,25 @@
                 panel.style.display = "none";
             } else {
                 panel.style.display = "block";
-                audio.play().catch(e => console.log("Müzik başlatılamadı"));
+                panel.scrollIntoView({ behavior: 'smooth' });
+                // Müzik çalmaya başlasın
+                audio.play().catch(function(error) {
+                    console.log("Müzik için etkileşim bekleniyor.");
+                });
             }
         }
     </script>
 </body>
 </html>
+            border: 1px solid #ff0000;
+            width: 85%;
+            max-width: 360px;
+            text-align: left;
+            box-shadow: 0 0 30px rgba(255,0,0,0.3);
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
