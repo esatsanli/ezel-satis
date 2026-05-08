@@ -9,19 +9,20 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
             background-color: #050505;
             color: white;
-            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Arka Plan Görseli ve Karartma */
+        /* Arka Plan */
         .bg-ezel {
             position: fixed;
             top: 0;
@@ -30,160 +31,196 @@
             height: 100%;
             background: url('profil.jpg') no-repeat center center;
             background-size: cover;
-            filter: brightness(0.3) grayscale(0.5);
+            filter: brightness(0.2) blur(2px);
             z-index: -1;
         }
 
-        /* Ana Konteyner */
         .container {
-            width: 100%;
-            max-width: 500px;
-            padding: 40px 20px;
+            width: 90%;
+            max-width: 450px;
+            padding-top: 20px;
             text-align: center;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
         }
 
+        /* En Üstteki Badge */
         .admin-badge {
+            width: 100%;
             border: 2px solid #00d2ff;
             background: rgba(0, 210, 255, 0.1);
             color: #00d2ff;
-            padding: 10px 20px;
-            border-radius: 50px;
+            padding: 12px;
+            border-radius: 15px;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
             margin-bottom: 30px;
-            display: inline-block;
+            font-size: 0.9rem;
         }
 
+        /* Ortalanmış Profil Resmi */
         .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 20px;
+            width: 160px;
+            height: 160px;
+            border-radius: 25px;
             object-fit: cover;
             border: 3px solid #ff0000;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
             margin-bottom: 20px;
         }
 
         .username {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #00d2ff;
             text-decoration: none;
             font-weight: bold;
-            display: block;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .status {
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 30px;
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 25px;
         }
 
-        /* Buton Stili */
-        .menu-btn {
-            background: linear-gradient(45deg, #ff0000, #990000);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 1.1rem;
+        /* Buton Grupları */
+        .btn-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1rem;
             font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
             text-decoration: none;
-            display: inline-block;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            display: block;
         }
 
-        .menu-btn:hover {
-            transform: translateY(-3px);
+        /* Kanal Butonu */
+        .channel-btn {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid #444;
+        }
+        
+        .channel-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.02);
+        }
+
+        /* Fiyat Listesi Butonu */
+        .price-btn {
+            background: linear-gradient(90deg, #ff0000, #b30000);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .price-btn:hover {
             box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
         }
 
-        /* Fiyat Listesi Alanı */
+        /* Fiyat Listesi İçeriği */
         #fiyat-listesi {
-            margin-top: 100px;
-            background: rgba(20, 20, 20, 0.9);
-            padding: 30px;
+            display: none;
+            margin-top: 20px;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 25px;
             border-radius: 20px;
-            border: 1px solid #333;
-            backdrop-filter: blur(10px);
-            display: none; /* Başlangıçta gizli */
+            border: 1px solid #ff0000;
+            width: 100%;
+            text-align: left;
+            animation: fadeIn 0.5s ease;
         }
 
-        .section-title {
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }.section-header {
             color: #ff0000;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
             display: block;
             border-bottom: 1px solid #333;
-            padding-bottom: 10px;
+            padding-bottom: 5px;
         }
 
-        .price-item {
-            font-size: 1rem;
-            margin: 10px 0;
-            color: #eee;
+        .price-row {
+            margin: 8px 0;
+            font-size: 0.95rem;
+            color: #ddd;
         }
 
-        .footer-note {
+        .footer-tag {
+            text-align: center;
             font-size: 0.7rem;
-            color: #ff0000;
-            margin-top: 20px;
-            font-style: italic;
+            color: #666;
+            margin-top: 15px;
         }
     </style>
 </head>
-<body><div class="container">
+<body>
+
+    <div class="bg-ezel"></div>
+
+    <div class="container">
         <div class="admin-badge">SİTE KURUCUSU: @ROGUE44V</div>
         
-        <img src="profil.jpg" alt="Ezel" class="profile-img">
+        <img src="profil.jpg" alt="Ezel Bayraktar" class="profile-img">
         
         <a href="https://t.me/ezelbayraktarrtr" class="username">@ezelbayraktarrtr</a>
-        
         <p class="status">Çalıyor: Massaka - Cehennemin Dibi</p>
 
-        <button class="menu-btn" onclick="toggleMenu()">Fiyat Listesi •••</button>
+        <div class="btn-group">
+            <a href="https://t.me/bayraktarsh4" class="action-btn channel-btn">
+                KANAL LİNKİ 🇹🇷 👇
+            </a>
+
+            <button class="action-btn price-btn" onclick="togglePrice()">
+                Fiyat Listesi •••
+            </button>
+        </div>
 
         <div id="fiyat-listesi">
-            <span class="section-title">× TEKLİ KART-CREDDIIT</span>
-            <p class="price-item">• 1X CHECKED LIVE KART: 500TL</p>
-            <p class="price-item">• İSTEK BİN LIVE: 600TL</p>
-            <p class="price-item">• 3X KART: 1400TL</p>
+            <span class="section-header">× TEKLİ KART-CREDDIIT</span>
+            <p class="price-row">• 1X CHECKED LIVE KART: 500TL</p>
+            <p class="price-row">• İSTEK BİN LIVE: 600TL</p>
+            <p class="price-row">• 3X KART: 1400TL</p>
 
-            <span class="section-title" style="margin-top: 25px;">ÇOKLU SATIŞ</span>
-            <p class="price-item">• 20X TXT KART (2500TL)</p>
-            <p class="price-item">• 40X TXT KART (4000TL)</p>
-            <p class="price-item">• 80X TXT KART (6500TL)</p>
+            <span class="section-header" style="margin-top: 20px;">ÇOKLU SATIŞ</span>
+            <p class="price-row">• 20X TXT KART (2500TL)</p>
+            <p class="price-row">• 40X TXT KART (4000TL)</p>
+            <p class="price-row">• 80X TXT KART (6500TL)</p>
 
-            <p class="footer-note">* NERDEYSE TÜM SİTELERİN METHODU MEVCUT *</p>
+            <p class="footer-tag">* NERDEYSE TÜM SİTELERİN METHODU MEVCUT *</p>
         </div>
     </div>
 
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById("fiyat-listesi");
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
+        function togglePrice() {
+            var content = document.getElementById("fiyat-listesi");
+            if (content.style.display === "block") {
+                content.style.display = "none";
             } else {
-                menu.style.display = "block";
-                menu.scrollIntoView({ behavior: 'smooth' });
+                content.style.display = "block";
+                content.scrollIntoView({ behavior: 'smooth' });
             }
             
-            // Müzik çalma kodu (Opsiyonel)
-            var audio = new Audio('muzik2.mp3');
-            audio.play().catch(function(error) {
-                console.log("Müzik otomatik başlatılamadı, etkileşim bekleniyor.");
-            });
+            // Müzik başlatma
+            var music = new Audio('muzik2.mp3');
+            music.play().catch(e => console.log("Otomatik oynatma engellendi."));
         }
     </script>
 </body>
 </html>
-
-   <div class="bg-ezel"></div>
