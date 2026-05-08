@@ -12,105 +12,98 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
             margin: 0;
-            /* Arka plan fotoğrafını daha belirgin yapmak için ayarlandı */
             background-image: url('profil2.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
+            background-attachment: fixed;
             position: relative;
         }
 
-        /* Arka planın üzerine hafif bir karartma ekleyerek yazıların okunmasını sağlar */
         body::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
             z-index: -1;
         }
 
-        /* Üst kısımdaki Mavi LED Efekti */
+        /* SİTE KURUCUSU - En üstte sabit */
         .admin-badge {
             border: 2px solid #00d2ff;
             box-shadow: 0 0 15px #00d2ff, inset 0 0 10px #00d2ff;
-            padding: 10px 25px;
+            padding: 8px 20px;
             border-radius: 50px;
             color: #00d2ff;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.6);
+            font-size: 0.8rem;
+            margin-top: 10px; /* En üste yaklaştırıldı */
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 15px;
             border: 2px solid #ff0000;
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
             object-fit: cover;
+            margin-top: 20px;
         }
 
         .tg-user {
             color: #00d2ff;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             text-decoration: none;
-            margin: 15px 0;
+            margin: 10px 0;
             font-weight: bold;
-            display: block;
         }
 
         .working-info {
-            color: #888;
-            font-size: 0.9rem;
+            color: #ccc;
+            font-size: 0.85rem;
             margin-bottom: 20px;
         }
 
         .btn {
-            background: #1a1a1a;
+            background: #111;
             border: 1px solid #333;
             color: white;
-            padding: 12px 30px;
+            padding: 12px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 1rem;
-            transition: 0.3s;
             text-decoration: none;
-            display: inline-block;
-            margin: 5px 0;
             width: 85%;
-            max-width: 360px;
+            max-width: 350px;
             text-align: center;
+            margin: 5px 0;
+            display: block;
         }
 
         .btn-red {
             background: #ff0000;
             border: none;
             font-weight: bold;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
         }
 
-        .price-list {
+        #priceList {
             display: none;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             padding: 20px;
             border-radius: 10px;
             border: 1px solid #ff0000;
             width: 85%;
-            max-width: 360px;
-            margin-top: 15px;
-            text-align: left;
+            max-width: 350px;
+            margin-top: 10px;
+            line-height: 1.6;
         }
     </style>
 </head>
-<body>
+<body onclick="playMusic()">
 
     <div class="admin-badge">SİTE KURUCUSU: @ROGUE44V</div>
 
@@ -120,30 +113,38 @@
 
     <div class="working-info">Çalıyor: Massaka - Cehennemin Dibi</div>
 
-    <a href="#" class="btn">KANAL LİNKİ 🇹🇷 👇</a>
+    <a href="https://t.me/bayraktarsh4" class="btn">KANAL LİNKİ 🇹🇷 👇</a>
 
     <button class="btn btn-red" onclick="togglePrices()">Fiyat Listesi •••</button>
 
-    <div id="priceList" class="price-list">
-        TEKLİ KART - CREDIT<br><br>
-        1X CHECKED LIVE KART: 500TL<br>
-        İSTEK BİN LIVE: 600TL<br>
-        3X KART (TOPLU): 1400TL<br><br>
-        ÇOKLU SATIŞ<br><br>
-        20X TXT KART (2500TL)<br>
-        40X TXT KART (4000TL)<br><script>
-        function togglePrices() {
-            var x = document.getElementById("priceList");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
+    <div id="priceList">
+        <b>TEKLİ KART - CREDIT</b><br>
+        • 1X CHECKED LIVE KART: 500TL<br>
+        • İSTEK BİN LIVE: 600TL<br>
+        • 3X KART (TOPLU): 1400TL<br><br>
+        <b>ÇOKLU SATIŞ</b><br>
+        • 20X TXT KART (2500TL)<br>
+        • 40X TXT KART (4000TL)<br>
+        • 80X TXT KART (6500TL)<br><br>
+        <small>* NERDEYSE TÜM SİTELERİN METHODU MEVCUT *</small>
+    </div>
+// Sayfada herhangi bir yere tıklandığında müziği başlatır
+        function playMusic() {
+            var audio = document.getElementById("muzik");
+            audio.play().catch(function(error) {
+                console.log("Müzik başlatılamadı: ", error);
+            });
         }
     </script>
 
 </body>
 </html>
-        80X TXT KART (6500TL)<br><br>
-        * NERDEYSE TÜM SİTELERİN METHODU MEVCUT *
-    </div>
+    <audio id="muzik" loop>
+        <source src="muzik2.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function togglePrices() {
+            var x = document.getElementById("priceList");
+            x.style.display = (x.style.display === "block") ? "none" : "block";
+        }
