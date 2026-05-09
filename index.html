@@ -14,131 +14,135 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-image: url('profil2.jpg');
+            padding: 0;
+            background-image: url('profil.jpg'); /* Arka plan profil.jpg yapıldı */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             position: relative;
+            overflow-x: hidden;
         }
 
         body::before {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5); /* Arka planın görünmesi için karartma azaltıldı */
             z-index: -1;
         }
 
-        /* SİTE KURUCUSU - En üstte sabit */
+        /* SİTE KURUCUSU - En üstte */
         .admin-badge {
             border: 2px solid #00d2ff;
             box-shadow: 0 0 15px #00d2ff, inset 0 0 10px #00d2ff;
-            padding: 8px 20px;
+            padding: 8px 25px;
             border-radius: 50px;
             color: #00d2ff;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 0.8rem;
-            margin-top: 10px; /* En üste yaklaştırıldı */
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 10;
+            margin-top: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
         }
 
+        /* ORTADAKİ FOTOĞRAF - Tam merkezde */
         .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 15px;
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
             border: 2px solid #ff0000;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
             object-fit: cover;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
-        .tg-user {
+        .username {
             color: #00d2ff;
-            font-size: 1.3rem;
-            text-decoration: none;
-            margin: 10px 0;
+            font-size: 1.4rem;
             font-weight: bold;
+            margin: 15px 0 5px 0;
+            text-decoration: none;
         }
 
-        .working-info {
+        .music-info {
             color: #ccc;
             font-size: 0.85rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-style: italic;
         }
 
         .btn {
             background: #111;
             border: 1px solid #333;
             color: white;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 1rem;
             text-decoration: none;
             width: 85%;
-            max-width: 350px;
+            max-width: 360px;
             text-align: center;
-            margin: 5px 0;
+            margin-bottom: 10px;
             display: block;
+            transition: 0.3s;
         }
 
         .btn-red {
             background: #ff0000;
             border: none;
             font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
         }
 
+        /* FİYAT LİSTESİ PANELİ */
         #priceList {
             display: none;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             border: 1px solid #ff0000;
-            width: 85%;
-            max-width: 350px;
+            width: 80%;
+            max-width: 360px;
             margin-top: 10px;
-            line-height: 1.6;
+            text-align: left;
+            line-height: 1.8;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+        }
+
+        .price-title {
+            color: #ff0000;
+            font-weight: bold;
+            border-bottom: 1px solid #333;
+            margin-bottom: 10px;
+            display: block;
         }
     </style>
 </head>
-<body onclick="playMusic()">
+<body onclick="startEverything()">
 
     <div class="admin-badge">SİTE KURUCUSU: @ROGUE44V</div>
 
-    <img src="profil.jpg" alt="Ezel" class="profile-img">
+    <img src="profil2.jpg" alt="Ezel" class="profile-img">
 
-    <a href="https://t.me/ezelbayraktarrtr" class="tg-user">@ezelbayraktarrtr</a>
-
-    <div class="working-info">Çalıyor: Massaka - Cehennemin Dibi</div>
+    <a href="https://t.me/ezelbayraktarrtr" class="username">@ezelbayraktarrtr</a>
+    <div class="music-info">Çalıyor: Massaka - Cehennemin Dibi</div>
 
     <a href="https://t.me/bayraktarsh4" class="btn">KANAL LİNKİ 🇹🇷 👇</a>
 
-    <button class="btn btn-red" onclick="togglePrices()">Fiyat Listesi •••</button>
-
-    <div id="priceList">
-        <b>TEKLİ KART - CREDIT</b><br>
+    <button class="btn btn-red" onclick="togglePrices()">Fiyat Listesi •••</button><div id="priceList">
+        <span class="price-title">TEKLİ KART - CREDIT</span>
         • 1X CHECKED LIVE KART: 500TL<br>
         • İSTEK BİN LIVE: 600TL<br>
         • 3X KART (TOPLU): 1400TL<br><br>
-        <b>ÇOKLU SATIŞ</b><br>
-        • 20X TXT KART (2500TL)<br>
-        • 40X TXT KART (4000TL)<br>
-        • 80X TXT KART (6500TL)<br><br>
-        <small>* NERDEYSE TÜM SİTELERİN METHODU MEVCUT *</small>
+        <span class="price-title">ÇOKLU SATIŞ</span>
+        • 20X TXT KART: 2500TL<br>
+        • 40X TXT KART: 4000TL<br>
+        • 80X TXT KART: 6500TL<br><br>
+        <center><small>* NERDEYSE TÜM SİTELERİN METHODU MEVCUT *</small></center>
     </div>
-// Sayfada herhangi bir yere tıklandığında müziği başlatır
-        function playMusic() {
-            var audio = document.getElementById("muzik");
-            audio.play().catch(function(error) {
-                console.log("Müzik başlatılamadı: ", error);
-            });
-        }
-    </script>
 
-</body>
-</html>
     <audio id="muzik" loop>
         <source src="muzik2.mp3" type="audio/mpeg">
     </audio>
@@ -148,3 +152,14 @@
             var x = document.getElementById("priceList");
             x.style.display = (x.style.display === "block") ? "none" : "block";
         }
+
+        function startEverything() {
+            var audio = document.getElementById("muzik");
+            audio.play().catch(function(error) {
+                console.log("Müzik etkileşim bekliyor.");
+            });
+        }
+    </script>
+
+</body>
+</html>
